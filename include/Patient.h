@@ -1,3 +1,6 @@
+#ifndef _PATIENT_H_
+#define _PATIENT_H_
+
 #include<Person.h>
 
 using namespace std;
@@ -9,3 +12,5 @@ private:
 public:
     void showInfomation();
 }; 
+
+#endif

@@ -4,101 +4,90 @@
 
 enum Menu_t{ 
     MAIN_MENU, 
-    DOCTOR_MENU, 
     PATIENT_MENU, 
+    DOCTOR_MENU, 
     NURSE_MENU, 
     DRIVER_MENU, 
     AMBULANCE_MENU, 
     APPOINTMENT_MENU 
 } ;
-
-
-void intoMainMenu(){
-    int category = 0;
-    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    cout << "\nSelect a category:\n\n";
-
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    cout << "./HOME\n";
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    cout << "[01] : APPOINTMENTS\n";
-    cout << "[02] : PATIENTS\n";
-    cout << "[03] : DOCTORS\n";
-    cout << "[04] : NURSES\n";
-    cout << "[05] : DRIVERS\n";
-    cout << "[06] : AMBULANCES\n\n";
-    cout << "[-1] : EXIT\n";
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
-    cout << "Enter your choice: ";
-    cin >> category;
-    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    cout << "\n";
-    
-
-    int category = 0;
+void intoMenu(Menu_t m);
+void intoPatientMenu(){     
+    while(1){
+        int choice = 0;
         cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-        cout << "\nSelect a category:\n\n";
-
+        cout << "\nSelect a choice:\n\n";
         cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-        cout << "./HOME\n";
-        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-        cout << "[01] : APPOINTMENTS\n";
-        cout << "[02] : PATIENTS\n";
-        cout << "[03] : DOCTORS\n";
-        cout << "[04] : NURSES\n";
-        cout << "[05] : DRIVERS\n";
-        cout << "[06] : AMBULANCES\n\n";
+        
+        cout << "[1] : register a new patient\n";
+        cout << "[2] : show patient infomation\n";
+        cout << "[3] : EXIT\n";
+        cout << "[4] : EXIT\n";
+        cout << "[-1] : EXIT\n";
+        cout << "[-1] : EXIT\n";
         cout << "[-1] : EXIT\n";
         cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
         cout << "Enter your choice: ";
-        cin >> category;
+        cin >> choice;
         cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
         cout << "\n";
-        if (category == -1)
-        {
+
+        if (choice == -1)        {
             cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
             cout << "\nShutting Down System...\n";
             cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
             break;
         }
-        else if (category == 1)
-        {
-            appointmentsMenu();
+        else {
+            intoMenu((Menu_t) choice);
         }
-        else if (category == 2)
-        {
-            patientsMenu();
-        }
-        else if (category == 3)
-        {
-            doctorsMenu();
-        }
-        else if (category == 4)
-        {
-            nursesMenu();
-        }
-        else if (category == 5)
-        {
-            driversMenu();
-        }
-        else if (category == 6)
-        {
-            ambulancesMenu();
-        }
-        else
-        {
-            cout << "\nInvalid Choice!\n";
-        }
-
         cout << endl;
+    }
+}
+void intoDoctorMenu(){      cout << "this is " << "Doctor"      << "menu" << endl;}
+void intoNurseMenu(){       cout << "this is " << "Nurse"       << "menu" << endl;}
+void intoDriverMenu(){      cout << "this is " << "Driver"      << "menu" << endl;}
+void intoAmbulanceMenu(){   cout << "this is " << "AmbulanceMe" << "menu" << endl;}
+void intoAppointmentMenu(){ cout << "this is " << "Appointment" << "menu" << endl;}
+void intoMainMenu(){
+    while(1){
+        int choice = 0;
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\nSelect a choice:\n\n";
+        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "[" << PATIENT_MENU << "] : PATIENT\n";
+        cout << "[" << DOCTOR_MENU << "] : DOCTOR\n";
+        cout << "[" << NURSE_MENU << "] : NURSE\n";
+        cout << "[" << DRIVER_MENU << "] : DRIVER\n";
+        cout << "[" << AMBULANCE_MENU << "] : AMBULANCE\n";
+        cout << "[" << APPOINTMENT_MENU << "] : APPOINTMENT\n";
+        cout << "[-1] : EXIT\n";
+        cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\n";
+
+        if (choice == -1)        {
+            cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+            cout << "\nShutting Down System...\n";
+            cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+            break;
+        }
+        else {
+            intoMenu((Menu_t) choice);
+        }
+        cout << endl;
+    }
+        
 }
 
- 
+
 void intoMenu(Menu_t m){
     switch (m) {
     case MAIN_MENU:
         intoMainMenu();
-        break; 
+        break;
     case DOCTOR_MENU:
         intoDoctorMenu();
         break; 
@@ -109,7 +98,7 @@ void intoMenu(Menu_t m){
         intoNurseMenu();
         break; 
     case DRIVER_MENU:
-        intoDirverMenu();
+        intoDriverMenu();
         break; 
     case AMBULANCE_MENU:
         intoAmbulanceMenu();
@@ -118,7 +107,7 @@ void intoMenu(Menu_t m){
         intoAppointmentMenu();
         break;
     default :
-        assert(0);
+        cout << "\nInvalid Choice!\n";
     }
 }
 
@@ -131,3 +120,16 @@ int main(){
     Database::storeMaps();
     return 0;
 }
+
+
+
+/* 
+
+Patient
+Doctor
+Nurse
+Driver
+AmbulanceMe
+Appointment
+
+*/

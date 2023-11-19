@@ -4,7 +4,6 @@
 #include<string>
 using namespace std;
 
-
 class Person{
 protected:
     int id;
@@ -14,9 +13,9 @@ protected:
     int category;           //category: 1:doctor; 2:patient; 3:nurse; 4:driver;
 
 public:
-    Person();
+    Person() {}
     
-    virtual void showInfomation();
+    virtual void showInfomation() = 0;
     void showPersonInfo();
 }; 
 

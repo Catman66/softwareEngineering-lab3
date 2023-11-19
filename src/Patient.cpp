@@ -6,3 +6,4 @@ void Patient::showInfomation(){
     Person::showPersonInfo();
     cout << (hospitalized ? "hospitalized" : "not hospitalized") << endl;
 }
+
