@@ -1,3 +1,6 @@
+#ifndef _PERSON_H_
+#define _PERSON_H_
+
 #include<string>
 using namespace std;
 
@@ -13,6 +16,8 @@ protected:
 public:
     Person();
     
-    virtual void loadInfomation() = 0;
-    virtual void storeInfomation() = 0;
+    virtual void showInfomation();
+    void showPersonInfo();
 }; 
+
+#endif
