@@ -1,4 +1,5 @@
-
+#ifndef _APPOINTMENT_H_
+#define _APPOINTMENT_H_
 
 class Appointment{
     int id;
@@ -11,3 +12,6 @@ public:
     ~Appointment();
     void showInfomation();
 } ;
+
+
+#endif

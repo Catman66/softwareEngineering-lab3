@@ -1,3 +1,6 @@
+#ifndef _DOCTOR_H_
+#define _DOCTOR_H_
+
 #include<Person.h>
 #include<list>
 
@@ -8,7 +11,11 @@ class Doctor: public Person{
 private:
     int timeAvailable;
     bool booked;
-
 public:
-    void showDesc(); 
+    Doctor() {}
+    ~Doctor(){}
+    void showInfomation();
+    int registeInfomation();
 }; 
+
+#endif

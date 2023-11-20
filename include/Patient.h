@@ -9,8 +9,13 @@ class Patient: public Person{
 private:
     bool hospitalized;
     
+    friend class Database;
 public:
+    Patient() {}
+    ~Patient() {}
     void showInfomation();
+    void hospitalize();
+    int registeInfomation();
 }; 
 
 #endif

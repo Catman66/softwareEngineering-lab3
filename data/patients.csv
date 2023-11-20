@@ -1,0 +1,4 @@
+id,name,gender,age,category,hospitalized,
+1,p01,w,10,N,
+2,p02,m,20,N,
+3,p03,m,30,Y,
