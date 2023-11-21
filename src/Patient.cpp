@@ -96,11 +96,15 @@ void Patient::menu(){
                 break;
             case 3:
                 p->hospitalize();
+                break;
+            case 4:
+                Database::showAppointmentsOf(p->id);
+                break;
             default:
                 break;
             }
             getline(cin, buffer, '\n');
-        }
+        } 
         cout << endl;
     }
 }

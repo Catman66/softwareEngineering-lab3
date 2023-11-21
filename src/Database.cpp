@@ -289,7 +289,8 @@ Ambulance* Database::lookupAmbulance(int id){
     return &ambulances.find(id)->second;
 }
 Appointment* Database::lookupAppointment(int id){
-    if (appointments.find(id) == appointments.end()) {
+    if (appointments.find(id) == appointments.end())
+    {
         return NULL;
     }
     return &appointments.find(id)->second;
@@ -306,4 +307,28 @@ int Database::showAllAvailableDoctors(){
         }
     }
     return n;
+}
+
+
+void Database::showAppointmentsOf(int patientId)
+{
+    for (auto& appmnt : Database::appointments) {
+        if (appmnt.second.patientId == patientId) {
+            appmnt.second.showInfomation();
+            cout << endl;
+        }
+
+        
+    }
+}
+
+
+void Database::addFeedback(string & feedback)
+{
+    ofstream ofs("data/feedback.txt", ios::app);
+    assert(ofs);
+
+    ofs << feedback;
+
+    ofs.close();
 }

@@ -61,7 +61,8 @@ public:
     static void showAllInfomation();
     static int showAllAvailableDoctors();
     static ofstream& storePerson(const string fname, Person& p);
-
+    static void showAppointmentsOf(int patientId);
+    static void addFeedback(string& feedback);
     static const string patientFname;
     static const string doctorFname;
     static const string nurseFname;

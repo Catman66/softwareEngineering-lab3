@@ -14,6 +14,7 @@ class Appointment{
     int hour;
 
     friend class Database;
+    friend class Patient;
 public:
     Appointment() {}
     ~Appointment() {}

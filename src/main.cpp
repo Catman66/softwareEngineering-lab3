@@ -8,13 +8,56 @@ enum Menu_t{
     NURSE_MENU, 
     DRIVER_MENU, 
     AMBULANCE_MENU, 
-    APPOINTMENT_MENU 
+    APPOINTMENT_MENU,
+    HELP_MENU,
+    FEEDBACK_MENU
 } ;
-
 
 void intoMenu(Menu_t m);
 
-
+void helpMenu(){
+    cout << "\n======the direction of the system======\n"
+     << "[main menu] \n"
+     << "   ->[patient menu]\n"
+     << "       ->[register a new patient]\n"
+     << "       ->[show patient infomation]\n"
+     << "       ->[remove patient infomation]\n"
+     << "   ->[doctor menu]\n"
+     << "       ->[register a new doctor]\n"
+     << "       ->[show doctor infomation]\n"
+     << "       ->[remove doctor infomation]\n"
+     << "   ->[nurse menu]\n"
+     << "       ->[register a new nurse]\n"
+     << "       ->[show nurse infomation]\n"
+     << "       ->[remove nurse infomation]\n"
+     << "   ->[driver menu]\n"
+     << "       ->[register a new driver]\n"
+     << "       ->[show driver infomation]\n"
+     << "       ->[remove driver infomation]\n"
+     << "   ->[ambulance menu]\n"
+     << "       ->[register a new ambulance]\n"
+     << "       ->[show ambulance infomation]\n"
+     << "       ->[remove ambulance infomation]\n"
+     << "   ->[appointment menu]\n"
+     << "       ->[book a new appointment]"
+     << "       ->[show history appointment infomation]\n"
+     << "       ->[recomend appintment infomation]\n"
+     << "   ->[feedback menu]\n"
+     << " ================================================"
+     << endl;
+}
+void feedbackMenu(){
+    cout << "please input your feedback "<< endl;
+    cout << "input \"@@@@@\" to submit "<< endl;
+    string feedback;
+    string buffer;
+    while(1){
+        getline(cin, buffer);
+        feedback += buffer + '\n';
+        if (buffer.find("@@@@@") != string::npos) break;
+    }
+    Database::addFeedback(feedback);
+}
 void intoMainMenu(){
     while(1){
         int choice = 0;
@@ -27,6 +70,8 @@ void intoMainMenu(){
         cout << "[" << DRIVER_MENU << "] : DRIVER\n";
         cout << "[" << AMBULANCE_MENU << "] : AMBULANCE\n";
         cout << "[" << APPOINTMENT_MENU << "] : APPOINTMENT\n";
+        cout << "[" << HELP_MENU << "] : HELP\n";
+        cout << "[" << FEEDBACK_MENU << "] : FEEDBACK\n";
         cout << "[0] : EXIT\n";
         cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
         cout << "Enter your choice: ";
@@ -73,6 +118,12 @@ void intoMenu(Menu_t m){
         break; 
     case APPOINTMENT_MENU:
         Appointment::menu();
+        break;
+    case HELP_MENU:
+        helpMenu();
+        break;
+    case FEEDBACK_MENU:
+        feedbackMenu();
         break;
     default :
         cout << "\nInvalid Choice!\n";
