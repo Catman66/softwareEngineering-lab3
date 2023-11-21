@@ -1,6 +1,9 @@
 #include "Database.h"
 #include <fstream>
 #include <sstream>
+#include <cassert>
+
+
 using namespace std;
 
 #define Log cout 
@@ -12,6 +15,7 @@ map<int, Driver> Database::drivers;
 map<int, Doctor> Database::doctors;
 map<int, Nurse> Database::nurses;
 map<int, Ambulance> Database::ambulances;
+map<int, Appointment> Database::appointments;
 
 const string Database::patientFname = "data/Patient.csv";
 const string Database::doctorFname = "data/Doctor.csv";
@@ -33,8 +37,35 @@ void Database::loadMaps(){
 #endif
 }
 void Database::storeMaps(){
-    for(auto& p : patients) store(p.second, patientFname);
+    ofstream patientOfs(Database::patientFname);
+    ofstream doctorOfs(Database::patientFname);
+    ofstream nurseOfs(Database::patientFname);
+    ofstream driverOfs(Database::patientFname);
+    ofstream ambulanceOfs(Database::patientFname);
+    ofstream appointmentOfs(Database::patientFname);
+
+    assert(
+        patientOfs
+    && doctorOfs
+    && nurseOfs
+    && driverOfs
+    && ambulanceOfs
+    && appointmentOfs
+    );
     
+    for(auto& p : patients) p.second.store(patientOfs);
+    for(auto& p : doctors) p.second.store(doctorOfs);
+    for(auto& p : nurses) p.second.store(nurseOfs);
+    for(auto& p : drivers) p.second.store(driverOfs);
+    for(auto& p : ambulances) p.second.store(ambulanceOfs);
+    for(auto& p : appointments) p.second.store(appointmentOfs);
+
+    patientOfs.close();
+    doctorOfs.close();
+    nurseOfs.close();
+    driverOfs.close();
+    ambulanceOfs.close();
+    appointmentOfs.close();
 }
 
 void Database::showAllInfomation(){
@@ -43,126 +74,6 @@ void Database::showAllInfomation(){
     for(auto& p : nurses) p.second.showInfomation();
     for(auto& p : drivers) p.second.showInfomation();    
 }
-
-
-
-
-void Database::storePatientMap(){
-    ofstream ofs;
-
-    ofs.open(tmpFname, ios::out);
-    // `le first line conataining column headers:
-    if (!ofs) {
-        Bug << "file tmpt open failed" << endl;
-        return; 
-    }
-    
-    ofs << "id,name,gender,age,category,hospitalized,\n";
-    for (auto patient : Database::patients)
-        storePerson(ofs, patient.second) 
-        << (patient.second.hospitalized ? 'Y' : 'N') << ","
-        << '\n';
-    
-    Log << "dump the map of " << patients.size() << " patients" << endl;
-
-    ofs.close();
-    remove(patientFname.c_str());
-    rename(tmpFname.c_str(), patientFname.c_str());
-    return;
-}
-void Database::storeDoctorMap(){
-    ofstream ofs;
-
-    ofs.open(tmpFname, ios::out);
-    // `le first line conataining column headers:
-    if (!ofs) {
-        Bug << "file tmpt open failed" << endl;
-        return; 
-    }
-    
-    ofs << "id,name,gender,age,category,hospitalized,\n";
-    for (auto p : Database::doctors)
-        storePerson(ofs, p.second) 
-        << p.second.timeAvailable << ","
-        << (p.second.booked ? 'Y' : 'N') << ','
-        << '\n';
-    
-    Log << "dump the map of " << doctors.size() << " patients" << endl;
-
-    ofs.close();
-    remove(doctorFname.c_str());
-    rename(tmpFname.c_str(), doctorFname.c_str());
-    return;
-}
-
-void Database::storeNurseMap(){
-    ofstream ofs;
-
-    ofs.open(tmpFname, ios::out);
-    // `le first line conataining column headers:
-    if (!ofs) {
-        Bug << "file tmpt open failed" << endl;
-        return; 
-    }
-    
-    ofs << "id,name,gender,age,category,hospitalized,\n";
-    for (auto patient : Database::nurses)
-        storePerson(ofs, patient.second);
-    
-    Log << "dump the map of " << patients.size() << " patients" << endl;
-
-    ofs.close();
-    remove(nurseFname.c_str());
-    rename(tmpFname.c_str(), nurseFname.c_str());
-    return;
-}
-void Database::storeDriverMap(){
-    ofstream ofs;
-
-    ofs.open(tmpFname, ios::out);
-    // `le first line conataining column headers:
-    if (!ofs) {
-        Bug << "file tmpt open failed" << endl;
-        return; 
-    }
-    
-    ofs << "id,name,gender,age,category,hospitalized,\n";
-    for (auto patient : Database::drivers);
-    
-    Log << "dump the map of " << drivers.size() << " patients" << endl;
-
-    ofs.close();
-    remove(driverFname.c_str());
-    rename(tmpFname.c_str(), driverFname.c_str());
-    return;
-}
-
-
-
-void Database::storeAmbulanceMap(){
-    ofstream ofs;
-
-    ofs.open(tmpFname, ios::out);
-    // `le first line conataining column headers:
-    if (!ofs) {
-        Bug << "file tmpt open failed" << endl;
-        return; 
-    }
-    
-    ofs << "id,name,gender,age,category,hospitalized,\n";
-    for (auto patient : Database::patients)
-        storePerson(ofs, patient.second) 
-        << (patient.second.hospitalized ? 'Y' : 'N') << ","
-        << '\n';
-    
-    Log << "dump the map of " << patients.size() << " patients" << endl;
-
-    ofs.close();
-    remove(patientFname.c_str());
-    rename(tmpFname.c_str(), patientFname.c_str());
-    return;
-}
-
 
 
 int Database::getNewId()

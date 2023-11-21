@@ -27,3 +27,10 @@ int Patient::registeInfomation(){
     Database::patients.insert_or_assign(id, *this);
     return id;
 }
+
+ofstream &Patient::store(ofstream &ofs)
+{
+    storePerson(ofs) << (hospitalized ? 'Y' : 'N') << ','
+    << '\n';
+    return ofs;
+}

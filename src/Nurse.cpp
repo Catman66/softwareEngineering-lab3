@@ -15,3 +15,8 @@ int Nurse::registeInfomation()
 
     return result;
 }
+
+ofstream &Nurse::store(ofstream &ofs)
+{
+    return storePerson(ofs);
+}

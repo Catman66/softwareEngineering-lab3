@@ -2,6 +2,7 @@
 #define _PATIENT_H_
 
 #include<Person.h>
+#include<list>
 
 using namespace std;
 
@@ -16,8 +17,7 @@ public:
     void showInfomation();
     void hospitalize();
     int registeInfomation();
-    virtual ofstream& store(ofstream& ofs) = 0;
-
+    ofstream& store(ofstream& ofs);
 }; 
 
 #endif

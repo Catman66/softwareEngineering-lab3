@@ -11,10 +11,10 @@ void Person::showPersonInfo(){
 }
 
 ofstream& Person::storePerson(ofstream& ofs){
-    ofs << id << "," 
-        << name << "," 
-        << gender << "," 
-        << age << "," 
+    ofs << id << ',' 
+        << name << ',' 
+        << gender << ',' 
+        << age << ',' 
         << category << ",";
     return ofs;
 }

@@ -1,6 +1,10 @@
 #include"Doctor.h"
 #include"Database.h"
 
+
+using namespace std;
+
+
 void Doctor::showInfomation(){
     // ask the database to get the infomation
     showPersonInfo();
@@ -20,4 +24,13 @@ int Doctor::registeInfomation()
 
     booked = false;
     return result;
+}
+
+ofstream &Doctor::store(ofstream &ofs)
+{
+    storePerson(ofs) << timeAvailable << ','
+    << (booked ? 'Y' : 'N')
+    << '\n'; 
+
+    return ofs;
 }

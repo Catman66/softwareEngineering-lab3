@@ -2,7 +2,8 @@
 #define _DOCTOR_H_
 
 #include<Person.h>
-#include<list>
+#include<fstream>
+
 
 using namespace std;
 
@@ -17,8 +18,7 @@ public:
     ~Doctor(){}
     void showInfomation();
     int registeInfomation();
-    virtual ofstream& store(ofstream& ofs) = 0;
-
+    ofstream& store(ofstream& ofs);
 }; 
 
 #endif

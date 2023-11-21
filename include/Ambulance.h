@@ -1,5 +1,7 @@
 #include<Person.h>
 #include<string>
+#include <fstream>
+
 
 using namespace std;
 
@@ -11,6 +13,6 @@ public:
     void loadInfomation();
     void storeInfomation();
     void showInfomation();
-    virtual ofstream& store(ofstream& ofs) = 0;
+    ofstream& store(ofstream& ofs);
 
 }; 

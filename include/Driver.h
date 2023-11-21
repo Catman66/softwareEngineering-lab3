@@ -3,6 +3,7 @@
 
 
 #include<Person.h>
+#include<list>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ public:
     void showInfomation();
 
     int registeInfomation();
-    virtual ofstream& store(ofstream& ofs) = 0;
+    ofstream& store(ofstream& ofs);
 }; 
 
 

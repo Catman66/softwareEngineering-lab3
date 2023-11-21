@@ -10,7 +10,7 @@ using namespace std;
 #include"Doctor.h"
 #include"Nurse.h"
 #include"Ambulance.h"
- 
+#include"Appointment.h"
 
 class Database{
     static map<int, Patient> patients;
@@ -18,6 +18,7 @@ class Database{
     static map<int, Doctor> doctors;
     static map<int, Nurse> nurses;
     static map<int, Ambulance> ambulances;
+    static map<int, Appointment> appointments;
 
     friend class Person;
     friend class Patient;
@@ -51,7 +52,7 @@ public:
     static void loadPersonInfo(stringstream& buffer, Person& p);
     static int getNewId();
     static void showAllInfomation();
-    static ofstream& storePerson(ofstream& ofs, Person& p);
+    static ofstream& storePerson(const string fname, Person& p);
 
     static const string patientFname;
     static const string doctorFname;
@@ -62,3 +63,22 @@ public:
 
 
 #endif
+
+
+/*
+
+Patient
+Doctor
+Nurse
+Driver
+Ambulance
+Appointment
+
+patient
+doctor
+nurse
+driver
+ambulance
+appointment
+
+*/

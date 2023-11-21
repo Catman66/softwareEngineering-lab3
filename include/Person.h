@@ -2,6 +2,7 @@
 #define _PERSON_H_
 
 #include<string>
+#include<fstream>
 using namespace std;
 class Database;
 
@@ -29,7 +30,7 @@ public:
     // return : 1=succ, 0=fail, 
     int registerPersonGetId();
     void showPersonInfo();
-    ofstream& storePerson(ofstream& ofs);
+    ofstream& storePerson(ofstream& fs);
 }; 
 
 #endif

@@ -13,3 +13,8 @@ int Driver::registeInfomation()
     
     return result;
 }
+
+ofstream &Driver::store(ofstream &ofs)
+{
+    return storePerson(ofs);
+}

@@ -1,6 +1,8 @@
 #ifndef _APPOINTMENT_H_
 #define _APPOINTMENT_H_
 
+#include<fstream>
+
 using namespace std;
 
 
@@ -14,9 +16,9 @@ class Appointment{
 
 public:
     Appointment(int id, int patientId, int doctorId, int date, int hour);
-    ~Appointment();
+    ~Appointment() {}
     void showInfomation();
-    virtual ofstream& store(ofstream& ofs);
+    ofstream& store(ofstream& ofs);
 } ;
 
 

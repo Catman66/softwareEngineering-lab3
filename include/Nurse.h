@@ -15,7 +15,7 @@ public:
     void showInfomation();
 
     int registeInfomation();
-    virtual ofstream& store(ofstream& ofs) = 0;
+    ofstream& store(ofstream& ofs);
 
 }; 
 
