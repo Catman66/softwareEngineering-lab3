@@ -16,7 +16,7 @@ public:
 
     int registeInfomation();
     ofstream& store(ofstream& ofs);
-
+    static void menu();
 }; 
 
 

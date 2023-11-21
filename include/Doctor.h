@@ -10,6 +10,7 @@ using namespace std;
 
 class Doctor: public Person{
     friend class Database;
+    friend class Appointment;
 private:
     int timeAvailable;
     bool booked;
@@ -19,6 +20,7 @@ public:
     void showInfomation();
     int registeInfomation();
     ofstream& store(ofstream& ofs);
+    static void menu();
 }; 
 
 #endif

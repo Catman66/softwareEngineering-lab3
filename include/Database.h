@@ -14,9 +14,9 @@ using namespace std;
 
 class Database{
     static map<int, Patient> patients;
-    static map<int, Driver> drivers;
     static map<int, Doctor> doctors;
     static map<int, Nurse> nurses;
+    static map<int, Driver> drivers;
     static map<int, Ambulance> ambulances;
     static map<int, Appointment> appointments;
 
@@ -39,6 +39,8 @@ public:
     static void loadAmbulanceMap();
     static void loadAppointmentMap();
 
+    static void loadMap(const string& fname, map<int, Person&>& mp);
+    
 
     static void storePatientMap();
     static void storeDoctorMap();
@@ -48,16 +50,26 @@ public:
     static void storeAppointmentMap();
 
     static Patient* lookupPatient(int id);
+    static Doctor* lookupDoctor(int id);
+    static Nurse* lookupNurse(int id);
+    static Driver* lookupDriver(int id);
+    static Ambulance* lookupAmbulance(int id);
+    static Appointment* lookupAppointment(int id);
 
     static void loadPersonInfo(stringstream& buffer, Person& p);
     static int getNewId();
     static void showAllInfomation();
+    static int showAllAvailableDoctors();
     static ofstream& storePerson(const string fname, Person& p);
 
     static const string patientFname;
     static const string doctorFname;
     static const string nurseFname;
     static const string driverFname;
+    static const string ambulanceFname;
+    static const string appointmentFname;
+
+    
     static const string tmpFname;
 } ;
 

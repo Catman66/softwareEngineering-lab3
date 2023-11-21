@@ -18,6 +18,8 @@ public:
     void hospitalize();
     int registeInfomation();
     ofstream& store(ofstream& ofs);
+
+    static void menu();
 }; 
 
 #endif

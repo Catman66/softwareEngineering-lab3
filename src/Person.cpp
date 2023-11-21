@@ -27,7 +27,7 @@ int Person::registerPersonGetId(){
     cout << "input gender: (m/w)" << endl;
     cin >> gender;
     
-    cout << " input age: "<< endl;
+    cout << "input age: "<< endl;
     cin >> age;
 
     id = Database::getNewId();
