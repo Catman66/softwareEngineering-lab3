@@ -1,7 +1,6 @@
 #include"Database.h"
 #include <cassert>
 
-
 enum Menu_t{ 
     MAIN_MENU, 
     PATIENT_MENU, 
@@ -11,6 +10,8 @@ enum Menu_t{
     AMBULANCE_MENU, 
     APPOINTMENT_MENU 
 } ;
+
+
 void intoMenu(Menu_t m);
 void intoPatientMenu(){     
     while(1){
@@ -35,10 +36,10 @@ void intoPatientMenu(){
         } else if (choice == 1) {
             Patient p;
             while(1){
-                int result = p.registeInfomation();
-                if (result == -1)   break;
-                else if (result == 1) {
-                    cout << "register succeed"  << endl;
+                int id = p.registeInfomation();
+                if (id == -1)   break;
+                else if (id >= 1) {
+                    cout << "register succeed, id allocted: " << id << endl;
                     break;
                 }
             }
@@ -48,9 +49,8 @@ void intoPatientMenu(){
             string buffer;
             int id;
 
-
         INPUT:
-            cout << "please input patient id, intput -1 to exit";
+            cout << "please input patient id, intput -1 to exit" << endl;
             cin >> buffer;
             try {
                 id = stoi(buffer);
@@ -75,6 +75,7 @@ void intoPatientMenu(){
             default:
                 break;
             }
+            getline(cin, buffer, '\n');
         }
         cout << endl;
     }

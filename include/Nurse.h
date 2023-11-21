@@ -5,6 +5,8 @@
 using namespace std;
 
 class Nurse: public Person {
+    friend class Database;
+
 public:
     Nurse() {}
     ~Nurse() {}
@@ -13,6 +15,7 @@ public:
     void showInfomation();
 
     int registeInfomation();
+    virtual ofstream& store(ofstream& ofs) = 0;
 
 }; 
 

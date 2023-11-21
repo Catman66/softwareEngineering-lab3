@@ -8,6 +8,7 @@ using namespace std;
 
 
 class Doctor: public Person{
+    friend class Database;
 private:
     int timeAvailable;
     bool booked;
@@ -16,6 +17,8 @@ public:
     ~Doctor(){}
     void showInfomation();
     int registeInfomation();
+    virtual ofstream& store(ofstream& ofs) = 0;
+
 }; 
 
 #endif

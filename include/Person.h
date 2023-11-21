@@ -20,13 +20,16 @@ protected:
     
     friend class Database;
 public:
+    // virtual function all set to zero 
+    // no constructor, no destructor
     virtual void showInfomation() = 0;
     virtual int registeInfomation() = 0;
-
+    virtual ofstream& store(ofstream& ofs) = 0;
 
     // return : 1=succ, 0=fail, 
-    int registerPersonInfo();
+    int registerPersonGetId();
     void showPersonInfo();
+    ofstream& storePerson(ofstream& ofs);
 }; 
 
 #endif

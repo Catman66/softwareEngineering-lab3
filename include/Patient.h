@@ -16,6 +16,8 @@ public:
     void showInfomation();
     void hospitalize();
     int registeInfomation();
+    virtual ofstream& store(ofstream& ofs) = 0;
+
 }; 
 
 #endif

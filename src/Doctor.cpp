@@ -11,7 +11,7 @@ void Doctor::showInfomation(){
 
 int Doctor::registeInfomation()
 {
-    int result = registerPersonInfo();
+    int result = registerPersonGetId();
 
     category = Database::getNewId();
     

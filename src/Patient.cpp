@@ -3,9 +3,12 @@
 
 void Patient::showInfomation(){
     // ask the database to get the infomation
+    cout << "====== show patient infomation ======";
     Person::showPersonInfo();
     cout << (hospitalized ? "hospitalized" : "not hospitalized") << endl;
 }
+
+
 
 void Patient::hospitalize(){
     if (this->hospitalized){
@@ -17,11 +20,10 @@ void Patient::hospitalize(){
 }
 
 int Patient::registeInfomation(){
-    int result = registerPersonInfo();
-    if(result != 1){
-        return result;
-    }
+    int result = registerPersonGetId();
+
+    category = Person::Patient_c;
     hospitalized = false;
     Database::patients.insert_or_assign(id, *this);
-    return result;
+    return id;
 }

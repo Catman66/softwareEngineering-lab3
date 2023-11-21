@@ -2,9 +2,9 @@ all: src/*.cpp
 	g++ $^ -o build/a.out -Iinclude
 	
 debug: src/*.cpp
-	g++ $^ -g -o build/a.out -Iinclude &
-	gdb build/a.out -x init.gdb
+	g++ $^ -g  -Iinclude -DDEBUG -o build/a.out && \
+	gdb build/a.out -x scripts/init.gdb
 
 
-run: all
+run: src/*
 	./build/a.out

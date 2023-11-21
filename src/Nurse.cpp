@@ -8,7 +8,7 @@ void Nurse::showInfomation(){
 
 int Nurse::registeInfomation()
 {
-    int result = registerPersonInfo();
+    int result = registerPersonGetId();
 
     category = Person::Nurse_c;
     

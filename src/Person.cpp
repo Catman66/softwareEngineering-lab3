@@ -10,8 +10,17 @@ void Person::showPersonInfo(){
         << "category: "      <<  category   << '\n';      //category: 1:doctor; 2:patient; 3:nurse; 4:driver;
 }
 
+ofstream& Person::storePerson(ofstream& ofs){
+    ofs << id << "," 
+        << name << "," 
+        << gender << "," 
+        << age << "," 
+        << category << ",";
+    return ofs;
+}
 
-int Person::registerPersonInfo(){
+
+int Person::registerPersonGetId(){
     cout << "input name: " << endl;
     cin >> name;
     
@@ -23,5 +32,5 @@ int Person::registerPersonInfo(){
 
     id = Database::getNewId();
 
-    return 1;
+    return id;
 }

@@ -8,7 +8,7 @@ void Driver::showInfomation(){
 
 int Driver::registeInfomation()
 {
-    int result = registerPersonInfo();
+    int result = registerPersonGetId();
     category = Person::Driver_c;
     
     return result;

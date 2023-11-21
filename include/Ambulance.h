@@ -11,4 +11,6 @@ public:
     void loadInfomation();
     void storeInfomation();
     void showInfomation();
+    virtual ofstream& store(ofstream& ofs) = 0;
+
 }; 
