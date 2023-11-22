@@ -147,7 +147,7 @@ int parseDate(string& date){
 int main(){
     string date;
     while (1) {
-        cout << "please input the date(format yyyy-mm-dd)\n" << endl;
+        cout << "please input the date(format yyyy-mm-dd)  \n" << endl;
         cin >> date;
 
         int parsed = parseDate(date);
