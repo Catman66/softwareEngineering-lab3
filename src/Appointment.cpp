@@ -3,7 +3,7 @@
 #include<iostream>
 #include<Database.h>
 
-#define GLOBAL_TIME 10
+#define GLOBAL_TIME (Database::date)
 
 
 using namespace std;

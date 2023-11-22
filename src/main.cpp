@@ -90,11 +90,8 @@ void intoMainMenu(){
             intoMenu((Menu_t) choice);
         }
         cout << endl;
-    }
-        
+    }       
 }
-
-
 
 void intoMenu(Menu_t m){
     switch (m) {
@@ -130,8 +127,37 @@ void intoMenu(Menu_t m){
     }
 }
 
-int main(){
+int parseDate(string& date){
+    // expected date in format: yyyy-mm-dd
+    int yyyy, mm, dd;
+    if (date.size() != 10) {
+        return -1;
+    }
+    try {
+        yyyy = stoi(date.substr(0, 4));
+        mm = stoi(date.substr(5, 2));
+        dd = stoi(date.substr(8, 2));
+    } catch (const invalid_argument& err){
+        return -1;
+    }
 
+    return (yyyy<<4) + (mm << 2) + dd;
+}
+
+int main(){
+    string date;
+    while (1) {
+        cout << "please input the date(format yyyy-mm-dd)\n" << endl;
+        cin >> date;
+
+        int parsed = parseDate(date);
+        if (parsed > 0) {
+            Database::date = parsed;
+            break;
+        }
+    }
+    
+    
     Database::loadMaps();
     
     intoMenu(MAIN_MENU);

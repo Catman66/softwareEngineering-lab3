@@ -27,6 +27,7 @@ const string Database::appointmentFname = "data/Appointment.csv";
 
 const string Database::tmpFname = "data/tmp.csv";
 
+int Database::date;
 
 
 
@@ -39,10 +40,11 @@ void Database::loadMaps(){
     loadAppointmentMap();
 
     // fresh the state of the doctors each time the system resets
-    for (auto& d : doctors) {
-        d.second.booked = false;
+    for (auto&  a : appointments) {
+        if (a.second.date < date) {
+            lookupDoctor(a.second.doctorId)->booked = false;
+        }
     }
-
 #ifdef DEBUG
     showAllInfomation();
 #endif

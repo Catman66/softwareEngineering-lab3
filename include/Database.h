@@ -68,10 +68,10 @@ public:
     static const string nurseFname;
     static const string driverFname;
     static const string ambulanceFname;
-    static const string appointmentFname;
-
-    
+    static const string appointmentFname;    
     static const string tmpFname;
+
+    static int date;
 } ;
 
 
